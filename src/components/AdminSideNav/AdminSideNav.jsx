@@ -11,7 +11,7 @@ const AdminSidenav = ({
   handleShowUserProducts, // Add handler for User Products
 }) => {
   return (
-    <nav className="bg-black/90 w-1/5 min-h-screen p-4 flex flex-col justify-start">
+    <nav className="bg-black/90 w-1/5 min-h-screen px-12 flex flex-col justify-start">
       <ul className="flex flex-col items-center w-full">
         <li className="w-full my-4">
           <Link
@@ -37,18 +37,7 @@ const AdminSidenav = ({
             Products
           </Link>
         </li>
-        <li className="w-full my-4">
-          <Link
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              handleShowFeaturedProducts();
-            }}
-            className="block text-white hover:bg-gray-700 py-3 px-4 rounded"
-          >
-            Featured Products
-          </Link>
-        </li>
+      
         <li className="w-full my-4">
           <Link
             href="#"

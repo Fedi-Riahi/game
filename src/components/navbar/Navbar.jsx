@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -8,6 +8,12 @@ import { CiUser, CiSearch, CiShoppingCart, CiLogout } from "react-icons/ci";
 export default function Navbar() {
   const { status, data: session } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItemCount(cartItems.length);
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -17,21 +23,13 @@ export default function Navbar() {
   const isAdmin = sessionStorage.getItem("adminToken");
 
   return (
-    <div className="bg-black dark:bg-gray-900 w-screen border-b border-gray-600 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 w-full">
+    <div className="bg-black dark:bg-gray-900 w-full border-b border-gray-600 dark:border-gray-600">
+      <div className=" flex flex-wrap items-center justify-between mx-10 p-4 max-w-screen">
         <Link
-          href="https://flowbite.com/"
+          href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <Image
-            src="https://flowbite.com/docs/images/logo.svg"
-            width={20}
-            height={20}
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            Gamely
-          </span>
+          <Image src="/logo.png" width={60} height={60} alt="Gamely" />
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -90,7 +88,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/about"
+                href="/aboutus"
                 className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 About Us
@@ -112,26 +110,41 @@ export default function Navbar() {
                 Contact Us
               </Link>
             </li>
+            {status === "authenticated" && (
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
             <li className="flex items-center space-x-4">
-            <CiSearch className="h-6 w-6 text-white"/>
-              <Link href="/cart">
-              <CiShoppingCart className="h-6 w-6 text-white"/>
+              <CiSearch className="h-6 w-6 text-white" />
+              <Link href="/cart" className="relative">
+                <CiShoppingCart className="h-6 w-6 text-white" />
+                {cartItemCount > 0 && (
+                  <span className="absolute -top-3 -right-3 inline-flex items-center justify-center z-20 px-2 py-1 text-xs font-bold leading-none text-red-100 bg-blue-600 rounded-full">
+                    {cartItemCount}
+                  </span>
+                )}
               </Link>
               {status === "authenticated" ? (
                 <div className="flex items-center space-x-4">
                   <Link href="/profile">
-                  <CiUser className="h-6 w-6 text-white"/>
+                    <CiUser className="h-6 w-6 text-white" />
                   </Link>
                   <button
                     onClick={() => handleSignOut()}
                     className="text-white"
                   >
-                    <CiLogout className="h-6 w-6 text-white"/>
+                    <CiLogout className="h-6 w-6 text-white" />
                   </button>
                 </div>
               ) : (
                 <Link href="/login">
-                  <CiUser className="h-6 w-6 text-white"/>
+                  <CiUser className="h-6 w-6 text-white" />
                 </Link>
               )}
             </li>

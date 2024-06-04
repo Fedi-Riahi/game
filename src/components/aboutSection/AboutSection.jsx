@@ -11,7 +11,7 @@ const About = () => {
       </p>
       <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
         {/* First Div */}
-        <div className="w-full lg:w-1/4 bg-white rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
+        <div className="w-full lg:w-1/4 bg-gradient-to-r from-blue-500/50 to-blue-400 rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
           <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
             01
           </h2>
@@ -21,7 +21,7 @@ const About = () => {
           </p>
         </div>
         {/* Second Div */}
-        <div className="w-full lg:w-1/4 bg-white rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
+        <div className="w-full lg:w-1/4 bg-gradient-to-r from-blue-500/50 to-blue-400 rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
           <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
             02
           </h2>
@@ -31,7 +31,7 @@ const About = () => {
           </p>
         </div>
         {/* Third Div */}
-        <div className="w-full lg:w-1/4 bg-white rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
+        <div className="w-full lg:w-1/4 bg-gradient-to-r from-blue-500/50 to-blue-400 rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
           <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
             03
           </h2>
@@ -41,7 +41,7 @@ const About = () => {
           </p>
         </div>
         {/* Fourth Div */}
-        <div className="w-full lg:w-1/4 bg-white rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
+        <div className="w-full lg:w-1/4 bg-gradient-to-r from-blue-500/50 to-blue-400 rounded-tr-lg rounded-bl-lg px-4 py-8 border border-gray-300">
           <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
             04
           </h2>

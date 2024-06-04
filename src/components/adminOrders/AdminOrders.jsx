@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
 
-function Orders({ handleCheckout }) {
+function AdminOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,13 +13,7 @@ function Orders({ handleCheckout }) {
           throw new Error("Failed to fetch orders.");
         }
         const data = await response.json();
-        // Filter orders based on buyerId or sellerUserId from session storage
-        const buyerId = sessionStorage.getItem("buyerId");
-        const sellerUserId = sessionStorage.getItem("sellerUserId");
-        const filteredOrders = data.orders.filter(
-          (order) => order.userId === buyerId || order.userId === sellerUserId
-        );
-        setOrders(filteredOrders);
+        setOrders(data.orders);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -35,6 +29,22 @@ function Orders({ handleCheckout }) {
     const itemsSummary = cartItems.map((item) => item.name).join(", ");
     return itemsSummary;
   }
+
+  // Function to handle deletion of an order
+  const handleDeleteOrder = async (orderId) => {
+    try {
+      const response = await fetch(`/api/order/${orderId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete order.");
+      }
+      // Remove the deleted order from the orders state
+      setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
+    } catch (error) {
+      console.error("Error deleting order:", error);
+    }
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -55,7 +65,7 @@ function Orders({ handleCheckout }) {
                 Total Price
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Created At
+                Action
               </th>
             </tr>
           </thead>
@@ -67,7 +77,14 @@ function Orders({ handleCheckout }) {
                   {generateItemsSummary(order.cartItems)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{order.totalPrice}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{order.createdAt}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    className="text-red-500 hover:text-red-700"
+                    onClick={() => handleDeleteOrder(order._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -77,4 +94,4 @@ function Orders({ handleCheckout }) {
   );
 }
 
-export default Orders;
+export default AdminOrders;

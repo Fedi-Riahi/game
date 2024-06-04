@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import Receipt from "../Receipt/Receipt";
+import Receipt from "@/components/Receipt/Receipt";
+import Link from "next/link";
 
 function Bill({ handleCheckout }) {
   const [email, setEmail] = useState("");
@@ -18,7 +19,8 @@ function Bill({ handleCheckout }) {
 
   useEffect(() => {
     // Retrieve cart items from local storage
-    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const storedCartItems =
+      JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
     // Calculate total price
     setTotalPrice(calculateTotal(storedCartItems));
@@ -215,7 +217,27 @@ function Bill({ handleCheckout }) {
           Proceed
         </button>
       </div>
-      {orderPlaced && <Receipt />}
+      {/* Display Receipt as a Modal */}
+      {orderPlaced && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-8 rounded-lg">
+            <Receipt
+              orderId={123} // Replace with actual orderId
+              timestamp={new Date().toString()} // Replace with actual timestamp
+              paymentMethod={paymentMethod}
+              email={email}
+              totalPrice={totalPrice}
+            />
+            <Link
+            href='/shop'
+              onClick={() => setOrderPlaced(false)}
+              className="mt-4 bg-gradient-to-r from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white font-semibold py-2 px-8 rounded-tl-lg rounded-br-lg"
+            >
+              Close
+            </Link>
+          </div>
+        </div>
+      )}
       <div className="w-full md:w-1/2">
         <ul>
           {cartItems.map((item, index) => (
@@ -250,3 +272,4 @@ function Bill({ handleCheckout }) {
 }
 
 export default Bill;
+

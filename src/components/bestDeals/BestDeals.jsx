@@ -32,8 +32,8 @@ const BestDeals = () => {
 
   return (
     <div className="mt-20 lg:mt-40 bg-white px-5 lg:px-20">
-      <div className="flex flex-col lg:flex-row items-center justify-between">
-        <h1 className="text-gray-900 text-2xl font-semibold mt-10 lg:mt-20 mb-5 lg:mb-0">
+      <div className="flex flex-col lg:flex-row items-center justify-between py-10">
+        <h1 className="text-black text-4xl font-semibold    lg:mb-0">
           Best Deals of the month
         </h1>
         <span className="text-gray-800">Voir Tout</span>

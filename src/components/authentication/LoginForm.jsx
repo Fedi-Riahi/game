@@ -88,7 +88,7 @@ export default function LoginForm() {
         return;
       }
 
-      router.replace("profile");
+      router.replace("/");
     } catch (error) {
       console.error(error);
     }
@@ -119,7 +119,7 @@ export default function LoginForm() {
             Login
           </button>
           {error && (
-            <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mb-4">
+            <div className="bg-red-500 text-white w-full text-sm py-3 px-3 rounded-md mb-4">
               {error}
             </div>
           )}

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import Auth from "@/utils/Auth";
 function Profile() {
   const [user, setUser] = useState({
     firstName: "",
@@ -272,4 +272,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Auth(Profile);

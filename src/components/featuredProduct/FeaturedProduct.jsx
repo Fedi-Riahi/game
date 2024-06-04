@@ -27,8 +27,8 @@ const ProductSection = () => {
   }
 
   return (
-    <section className="py-4 px-5 lg:mx-20 lg:px-0 lg:w-full">
-      <div className="flex flex-col lg:flex-row items-center justify-start lg:w-1/2 gap-8 mb-10">
+    <section className="py-4 px-5 md:px-20 lg:px-0 lg:w-full">
+      <div className="flex flex-col lg:flex-row items-center justify-start lg:w-1/2 gap-8 mb-10 mx-20">
         <h1 className="mb-5 text-2xl lg:text-3xl font-bold text-white text-center lg:text-start lg:w-1/3">
           Topnotch Market Place deal!
         </h1>
@@ -71,7 +71,7 @@ const ProductSection = () => {
         <div className="flex-1 text-center">
           <div className="relative w-64 h-64 lg:w-96 lg:h-96 mx-auto">
             <Image
-              src={product.productImage[0]}
+              src={product.productImage[1]}
               alt="Right Image"
               layout="fill"
               objectFit="contain"

@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function BusinessRegistrationForm() {
   const { data: session } = useSession();
+  const router = useRouter()
   const [formData, setFormData] = useState({
     userId: "",
     name: "",
@@ -67,7 +69,7 @@ export default function BusinessRegistrationForm() {
 
       // Set sellerUserId in session storage upon successful registration
       sessionStorage.setItem("sellerUserId", formData.userId);
-
+      router.refresh()
       // Reset the form data
       setFormData({
         userId: "",
@@ -99,7 +101,7 @@ export default function BusinessRegistrationForm() {
 
           <div className="mb-4 w-full">
             <label htmlFor="name" className="block">
-              Name:
+              Seller Name
             </label>
             <input
               type="text"
@@ -109,6 +111,7 @@ export default function BusinessRegistrationForm() {
               onChange={handleChange}
               required
               className="py-3 px-2 w-full border border-gray-300"
+              placeholder=" Seller Name"
             />
           </div>
 

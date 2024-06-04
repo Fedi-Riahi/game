@@ -76,7 +76,7 @@ const Listings = () => {
 
   return (
     <div className="bg-white w-full">
-      <Intro />
+      <Intro title="Marketplace Products"/>
       <div className="md:px-10 sm:px-5 w-full">
         <div className="flex items-center justify-between w-fit mt-4 mb-5">
           <div className="flex flex-col gap-1 w-2/5">

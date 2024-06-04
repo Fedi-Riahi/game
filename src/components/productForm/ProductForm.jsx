@@ -5,6 +5,7 @@ import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function ProductForm() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -20,6 +21,7 @@ function ProductForm() {
   const [generatedId] = useState(v4());
   const [loading, setLoading] = useState(false);
   const [imageUploadComplete, setImageUploadComplete] = useState(false);
+  const router = useRouter()
 
   const imageListRef = ref(storage, `images/${generatedId}`);
 
@@ -101,6 +103,7 @@ function ProductForm() {
 
       const data = await response.json();
       console.log("Product submitted successfully:", data.product);
+      router.refresh()
     } catch (error) {
       console.error("Error submitting product data:", error);
     } finally {

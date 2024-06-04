@@ -15,7 +15,7 @@ const Sidenav = ({ handleShowWishlist, handleShowSellerProducts, handleShowOrder
 
   return (
     <>
-      <button className="block md:hidden text-white bg-black/80 py-2 px-auto text-center" onClick={toggleNav}>
+      <button className="block md:hidden text-white bg-black/80 py-2text-center" onClick={toggleNav}>
         Menu
       </button>
       <nav
@@ -26,7 +26,7 @@ const Sidenav = ({ handleShowWishlist, handleShowSellerProducts, handleShowOrder
         <button className="absolute top-4 right-4 text-white md:hidden" onClick={closeNav}>
           Close
         </button>
-        <ul className="flex flex-col items-center w-full">
+        <ul className="flex flex-col items-center w-full px-8">
           <li className="w-full my-4">
             <Link
               href="#"

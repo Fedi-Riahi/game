@@ -70,12 +70,12 @@ const NewsList = () => {
   }
 
   return (
-    <div>
+    <div className="flex justify-start items-center gap-4 w-full">
       {Array.isArray(news) && news.length > 0 ? (
         news.map((item) => (
           <div key={item.id} className="mb-4">
             <h3 className="text-lg font-semibold py-4">{item.title}</h3>
-            <Image src={item.imageUrl} alt="News Image" width={400} height={200} />
+            <Image src={item.imageUrl} alt="News Image" width={400} height={200} className="object-fit"/>
             <div className="flex mt-2 gap-4">
               <button
                 onClick={() => handleEdit(item._id)} 

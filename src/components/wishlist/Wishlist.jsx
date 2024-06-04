@@ -100,7 +100,7 @@ const Wishlist = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Wishlist</h1>
+      <h1 className="text-2xl font-medium my-4">Wishlist</h1>
       {wishlist.map((product) => (
         <div
           key={product._id}
@@ -109,14 +109,13 @@ const Wishlist = () => {
           <div className="w-1/4 flex items-center justify-center">
             <div
               className="relative overflow-hidden rounded-lg"
-              style={{ width: "300px", height: "200px" }}
+              style={{ width: "400px", height: "300px" }}
             >
               <Image
                 src={product.productImage[0]}
                 alt={product.name}
                 layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>

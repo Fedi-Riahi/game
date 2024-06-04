@@ -49,8 +49,8 @@ const AdminsList = () => {
   };
 
   return (
-    <div className="my-20">
-      <h2 className="text-xl mb-4 font-medium">Admins</h2>
+    <div className="my-4">
+      <h2 className="text-2xl mb-4 font-medium">Admins</h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {admins.map((admin) => (
           <div

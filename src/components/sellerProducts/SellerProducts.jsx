@@ -103,7 +103,7 @@ function SellerProducts() {
           onFinishEditing={handleFinishEditing}
         />
       ) : (
-        <div className="md:w-2/3 mx-2">
+        <div className="md:w-full ">
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -117,41 +117,40 @@ function SellerProducts() {
                     className="border border-gray-200 p-4 rounded-lg shadow-lg flex flex-col md:flex-row items-center mb-4 gap-10"
                   >
                     <div className="w-full md:w-1/4 flex items-center justify-center mb-4 md:mb-0">
-                      <div className="relative overflow-hidden rounded-lg h-48 w-48 md:w-full md:h-full">
+                      <div className="relative overflow-hidden rounded-lg  md:w-72 md:h-72">
                         <Image
                           src={product.productImage[0]}
                           alt={product.name}
                           layout="fill"
-                          objectFit="cover"
-                          className="rounded-lg"
+                          className="object-cover w-full h-full"
                         />
                       </div>
                     </div>
-                    <div className="w-full md:w-3/4 flex flex-col">
-                      <span className="font-bold">Name:</span>
+                    <div className="w-full md:w-3/4 flex flex-col justify-between md:h-full">
+                      <span className="font-bold">Name</span>
                       <h2 className="text-lg mb-2">{product.name}</h2>
-                      <span className="font-bold">Date:</span>
+                      <span className="font-bold">Date</span>
                       <p>{product.createdAt.split("T")[0]}</p>
-                      <span className="font-bold">Category:</span>
+                      <span className="font-bold">Category</span>
                       <p>{product.category}</p>
-                      <span className="font-bold">Price:</span>
-                      <p className="font-bold">{product.price} DT</p>
+                      <span className="font-bold">Price</span>
+                      <p className="">{product.price} DT</p>
                       <div className="flex justify-end mt-4">
                         <button
                           onClick={() => handleEditProduct(product._id)}
-                          className="mr-2 text-sm bg-blue-500 hover:bg-blue-600 text-white font-medium py-1 px-4 rounded-lg"
+                          className="mt-4 mr-2 text-md bg-gradient-to-r from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white font-medium py-2 px-8 rounded-tl-lg rounded-br-lg"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleRequestBoost(product._id)}
-                          className="mr-2 text-sm bg-green-500 hover:bg-green-600 text-white font-medium py-1 px-4 rounded-lg"
+                          className="mt-4 mr-2 text-md bg-gradient-to-r from-blue-500 via-blue-600 to-purple-700 hover:from-blue-600 hover:via-blue-700 hover:to-purple-800 text-white font-medium py-2 px-8 rounded-tl-lg rounded-br-lg"
                         >
                           Request Boost
                         </button>
                         <button
                           onClick={() => handleDeleteProduct(product._id)}
-                          className="text-sm text-red-500 bg-white font-medium py-1 px-4 rounded-lg border border-red-500"
+                          className="mt-4 mr-2 text-md border border-red-500 text-red-500 hover:bg-red-50 font-medium py-2 px-8 rounded-tl-lg rounded-br-lg"
                         >
                           Delete
                         </button>
